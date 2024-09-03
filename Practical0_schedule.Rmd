@@ -107,7 +107,7 @@ A package is an additional 'plug-in' for R that can extend its capabilities. Whe
 
 Packages are hosted on the Comprehensive R Archive or CRAN. As there are now so many R packages they have been organised into [Task Views](https://cran.r-project.org/web/views/) on CRAN to help you navigate them.
 
-## How to install and activate a package from CRAN
+## How to install and activate a package from CRAN 
 Using a package is a 2-step process:
 
 * Install a package. This downloads software from the internet onto your computer. **It only has to be done once**. If you use NUIT cluster room PCs most of the packages you need for NES2303 should already be available so you can skip this step. Use `install.packages("package_name")` to install a package.
@@ -116,10 +116,10 @@ Using a package is a 2-step process:
 A common mistake is to forget to use the `library()` command. I try to remember to use it first in any R session.
 
 
-## Installing an R package
-R has a special function called `install.packages()` that allows you download software from the internet onto your PC. On an NUIT computer it will install it into a networked folder, so it should be available for you on any NUIT computer. If working on your own laptop or MacBook the package will be installed on the laptop's disk drive (**unsupported**).
+## Installing an R package **(not needed in NUIT cluster room)**
+R has a special function called `install.packages()` that allows you download software from the internet onto your PC. The packages you use in NES2303 should already be installed, so you **do not** need to do this step. If working at home on your own laptop or MacBook you need to install the package (**unsupported**). For home laptops / MacBooks the instructions are below.
 
-On the left of your RStudio screen you should see a large window headed **Console** which will contain introductory text about the R version you are usin etc. On my PC it shows as version 4.0.2 but you may have a more recent version:
+On the left of your RStudio screen you should see a large window headed **Console** which will contain introductory text about the R version you are using etc. On my PC it shows as version 4.0.2 but you may have a more recent version:
 
 ```{r, echo = FALSE}
 knitr::include_graphics("images/R_console_initial.png")
@@ -133,7 +133,7 @@ install.packages("mosaic")
 
 Normally lots of output is generated as packages are downloaded from the internet and stored on your computer. This is nothing to worry about.
 
-## Activating an R package (**Needed for every practical**)
+## Activating an R package **(needed for every practical, including NUIT clusters)**
 Use the `library()` function to activate an R package. Installing an R package simply puts the extra software on your PC, but it does not make it available for use. This is because you may have many packages eventually installed, that might have commands with identical names but which do different things. To take a simple example, in some packages the `plot` command will create a map, whereas in other packages it might display a genome phylogeny, and you would not want to confuse them. Therefore, in any R session you generally only make available the packages you need. To make the commands from a package available to use, enter the `library` command followed by the package name.
 
 
@@ -713,7 +713,7 @@ The community or R users are extremely welcoming and supportive so just remember
 Please look at the **Ten-minute videos** (TMV) that provide clear background information **before** you attend each set of practicals. Understanding R requires you to understand what it is doing, and how to read its often cryptic outputs.
 
 ## Books, online guides
-See the Canvas reading list for NES2303. I have updated this with new resources for 2022, with most books in electronic format. There are also lots of excellent resources out there for learning R, some of those that we recommend are listed here and should be enough to keep you going 
+See the Canvas reading list for NES2303. I have updated this with new resources for this year, with most books in electronic format. There are also lots of excellent resources out there for learning R, some of those that we recommend are listed here and should be enough to keep you going 
 
 [learnR4free](http://learnR4free.com)
 

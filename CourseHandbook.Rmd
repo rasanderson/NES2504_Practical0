@@ -370,7 +370,7 @@ When you want to repeat or modify any analyses or graphs 6 months later, simply 
 
 * even moderately complex analyses, including some that you will do in NES2303, are impossible in Excel etc;
 
-* Government bodies (including NHS, Natural England), media organisations (including BBC, Financial Times, The Guardian), Research Institutes (including Centre for Ecology and Hydrology, Francis Crick Institute), all universities (internationally and UK) use to analyse and visualise R 
+* Government bodies (including NHS, Natural England), media organisations including [BBC](https://bbc.github.io/rcookbook/), Financial Times, The Guardian), Research Institutes (including Centre for Ecology and Hydrology, Francis Crick Institute), all universities (internationally and UK) use to analyse and visualise R 
 
 * **Increases your employability** It looks great on your CV after you graduate as it demonstrates you are also a data scientist! 
 
