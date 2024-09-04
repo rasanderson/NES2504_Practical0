@@ -31,17 +31,21 @@ R is the basic underlying computer software you use to undertake analyses of bio
 ## Starting RStudio
 Campus computers have the software installed and NES2303 assumes you will be using an NUIT-managed PC. Both R and RStudio are free download from [download the R software](https://cran.r-project.org/) and [Download the R Studio desktop software](https://rstudio.com/products/rstudio/#rstudio-desktop) respectively. However, if you run it on your own laptop or MacBook we **will not provide you with any technical support** as there is too much variation between operating systems, PC configuration etc.
 
-You should have a 'search' bar at the bottom left of your NUIT Windows PC, labelled _Type here to search_. In it type **_RStudio_** and the launch icon should be displayed for you to click on:
+You should have a 'search' bar at the bottom left of your NUIT Windows PC, labelled _Type here to search_. Alternatively, click on the Windows button at the bottom list. Type **_RStudio_** and the launch icon should be displayed for you to click on:
 
 ```{r, echo = FALSE}
 knitr::include_graphics("images/start_from_windows_menu.png")
 ```
 
+Do **not** click on the icon labelled _R i386_ or _R x64_ )
 
-(If you do not have a search bar, click on the Windows icon, navigate to _Programming and Databases_ or _RStudio_ and click on the _RStudio_ icon. Do **not** click on the icon labelled _R i386_ or _R x64_ )
 
+### **Pop-up windows on NUIT PCs**
+You may see one or more irritating pop-up windows when you first use RStudio:
 
-**IMPORTANT**: If a popup window appears when you start RStudio click "Ignore Update"
+* If asked which version, click "OK" to select the default
+* If asked to send back Usage Information click "No"
+* If asked to update RStudio click "Ignore Update"
 
 Once RStudio has started up you can get to work.
 
@@ -107,7 +111,7 @@ A package is an additional 'plug-in' for R that can extend its capabilities. Whe
 
 Packages are hosted on the Comprehensive R Archive or CRAN. As there are now so many R packages they have been organised into [Task Views](https://cran.r-project.org/web/views/) on CRAN to help you navigate them.
 
-## How to install and activate a package from CRAN 
+## How to install and activate a package from CRAN (not needed in today's session, but important to read)**
 Using a package is a 2-step process:
 
 * Install a package. This downloads software from the internet onto your computer. **It only has to be done once**. If you use NUIT cluster room PCs most of the packages you need for NES2303 should already be available so you can skip this step. Use `install.packages("package_name")` to install a package.
@@ -141,10 +145,16 @@ Use the `library()` function to activate an R package. Installing an R package s
 library(mosaic)
 ```
 
-You will probably see some text displayed warning you that various 'objects are masked'. This is simply to tell you that the `mosaic` package loads additional commands, that have the same names as some basic ones, and is nothing to worry aboue.
+You will probably see lots of red text displayed warning you that various 'objects are masked'. This is the output that I see:
+
+```{r, eval=TRUE, echo=FALSE}
+detach("package:mosaic", unload = TRUE)
+library(mosaic)
+```
+This is simply to tell you that the `mosaic` package loads additional commands, that have the same names as some basic ones, and is nothing to worry aboue.
 
 
-# RStudio projects
+# RStudio projects (**Important**)
 An RStudio project is a special folder where you can safely keep all the commands for your analyses and your data files together. I generally create a separate RStudio project folder for each experiment or survey that I am involved in.
 
 ## Create an RStudio project (Just needed once in this first practical)
