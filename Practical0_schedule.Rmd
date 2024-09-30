@@ -66,7 +66,7 @@ By default RStudio tries to re-open everything you last worked with (even if you
 knitr::include_graphics("images/tools_global.png")
 ```
 
-Make sure that the following boxes are **unticked** or changed (see below):
+Make sure that the following boxes are **unticked** or changed (see **red box** below):
 
 * Restore most recently opened project at startup
 * Restore previously opened source files at startup
@@ -543,7 +543,9 @@ We have already learned how to *assign* a *value* to an *object* but to do more 
 
 ### Vectors
 
-A vector is the most common and basic data type in R, a vector is composed by a series of values, which can be either numbers or characters. We can assign a series of values to a vector using the `c()` function. For example we can create a vector of animal weights and assign it to a new object weight_kg
+A vector is the most common and basic data type in R, a vector is composed by a series of values, which can be either numbers or characters. We can assign a series of values to a vector using the `c()` function. For example we can create a vector of animal weights and assign it to a new object weight_kg.
+
+Go back to your R script (top left window in RStudio) and enter the following code to create a vector of animal weights. You can hit Ctrl-Enter to run the line:
 
 ```{r}
 weight_kg <- c(190, 310, 500)
@@ -644,13 +646,18 @@ In all cases we need to assign the information in the file to an object so our c
 
 ## Importing tables of data via CSV files
 
-We have already looked at CSV files, which you can export from Microsoft Excel using Excel's "Save As" option. This makes them the most useful "general" format for storing data.
+We have already looked at importing CSV files, which you can export from Microsoft Excel using Excel's "Save As" option. This makes them the most useful "general" format for storing data. The general structure is:
 
 ```{r, eval = FALSE, echo = TRUE}
+# Import data from a CSV file (don't run next line)
 my_data_object <- read.csv(file = "Path_to_the_file.csv")
-
+# Which you ran earlier as
+pract0_dat <- read.csv(file = "yield.csv")
+# or if you put yield in a Data folder
+pract0_dat <- read.csv(file = "Data/yield.csv")
 ```
 
+Notice how the words `file =` are optional. You can just put the filename in quotes, but it is good practice to include the `file =` part as it makes your code easier to read.
 
 ## Saving (exporting) outputs
 
@@ -661,8 +668,8 @@ Data can be saved to `.csv` files using the `write.csv` function.
 The code is similar to that used to read data in, it requires the filepath specifying where you want to save the file which includes the name that you want to give to the file, and it requires the name of the object that is being written (saved).
 
 ```{r, eval = FALSE, echo = TRUE}
-# writing my_data_object to a file called my_output_data
-
+# writing my_data_object
+# Edit the next line to save your animals_df object into a file called my_output_data.csv
 write.csv(my_data_object, file = "Data/my_output_data.csv")
 ```
 
@@ -725,13 +732,13 @@ Please look at the **Ten-minute videos** (TMV) that provide clear background inf
 ## Books, online guides
 See the Canvas reading list for NES2303. I have updated this with new resources for this year, with most books in electronic format. There are also lots of excellent resources out there for learning R, some of those that we recommend are listed here and should be enough to keep you going 
 
+[Our Coding Club - written by biology students for biology students](https://ourcodingclub.github.io/)
+
 [learnR4free](http://learnR4free.com)
 
 [Data science box](http://datasciencebox.org)
 
 [Data carpentry](https://datacarpentry.org/R-ecology-lesson/index.html)
-
-[Our Coding Club - written by students for students](https://ourcodingclub.github.io/)
 
 These sites are for reference only.
 
