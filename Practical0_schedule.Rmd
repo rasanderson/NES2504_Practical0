@@ -64,7 +64,6 @@ knitr::include_graphics("images/tools_global.png")
 
 Make sure that the following boxes are **unticked** or changed (see below):
 
-* Restore most recently opened project at startup
 * Restore previously opened source files at startup
 * Restore .RData into workspace at startup
 * Save workspace to .RData on exit. **Change to never**
@@ -116,8 +115,8 @@ Using a package is a 2-step process:
 A common mistake is to forget to use the `library()` command. I try to remember to use it first in any R session.
 
 
-## Installing the R packages needed for NES2303 (**Needed for this practical**)
-You need three R packages installed initially for this module. You should only need to do the installation once on an NUIT networked PC. The three packages are:
+## Installing the R packages needed for NES2303 (**Only needed on your own laptop**)
+NUIT clusters should have the key packages installed, so you should be able to skip this step. You need three R packages installed initially for this module. You should only need to do the installation once on an NUIT networked PC. The three packages are:
 
 * `mosaic` : this does a goal-oriented approach for plots and models
 * `car` : this makes the output of some analyses easier to understand
