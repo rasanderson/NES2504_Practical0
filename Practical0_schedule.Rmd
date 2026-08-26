@@ -5,6 +5,7 @@ output:
   html_document:
     df_print: paged
     number_sections: true
+    css: custom.scss
   word_document:
     number_sections: true
     reference_docx: template.docx
@@ -220,7 +221,7 @@ Finally, the following window, entitled **Create New Project** should appear:
 
 In this window complete two sections:
 
-- The **Directory name**. This is the name of the folder to store your files containing records of your analyses and your data . For convenience, call it **NES2303** as shown above.
+- The **Directory name**. This is the name of the folder to store your files containing records of your analyses and your data . For convenience, call it **NES2504**.
 - The section **Create project as subdirectory of:** Click on the **Browse** button and navigate to you **OneDrive** folder. This will typically be called "OneDrive - Newcastle University" with a blue Cloud icon. You should store all your folders and files here so they are backed up.
 
 Finally, click on the **Create project** button at the bottom and you should now see the name of your project displayed in the top right hand side of your R Studio window.
@@ -316,9 +317,9 @@ Just as you use headings and paragraphs to make an essay easier to read, use `#`
 
 ```{r, eval=FALSE}
 library(mosaic)
-pract0_dat <- read.csv("yield.csv")
+pract0_dat<-read.csv("yield.csv")
 summary(pract0_dat)
-mean(yield ~ soil, data=pract0_dat)
+mean(yield~soil,data=pract0_dat)
 ```
 
 A few key points:
@@ -394,7 +395,7 @@ Go back to your File Manager and you should see something similar to this:
 There are four files listed, although the default settings in File Manager does not give their full names (last few letters are omitted) which can cause confusion
 
 - `NES2504` which is actually `NES2504.RProj` and contains your RStudio project settings
-- `practical0` which is actuallry `practical0.R` and contains your script with R commands
+- `practical0` which is actually `practical0.R` and contains your script with R commands
 - `yield` which is `yield.csv` in Comma Separated Value format
 - `yield` which is `yield.xlsx` in Microsoft Excel format
 
@@ -433,8 +434,13 @@ to
 
 `pract0_dat <- read.csv("Data/yield.csv")`
 
-My preference (and recommendation to you) is to put all your CSV files into a `Data` subfolder in your `NES2303` folder, in which case you'll need to remember to add `Data/` to any `read.csv` commands.
-That way your NES2303 folder is less likely to get cluttered as you go through the module.
+My preference (and recommendation to you) is to put all your CSV files into a `Data` subfolder in your `NES2504` folder, in which case you'll need to remember to add `Data/` to any `read.csv` commands.
+That way your NES2404 folder is less likely to get cluttered as you go through the module.
+Do this now:
+
+- Open your Windows File Manager again (it might still be open), and inside your NES2504 folder create a new folder called 'Data'.
+- Move (click and drag) your two `yield` files (.xlsx and .csv) into your Data folder
+- Go back to RStudio and change the `read.csv` line to include the `Data` prefix as shown above. Run the code again to be sure it all works.
 
 # Working with data
 
@@ -541,7 +547,7 @@ my_height_inch
 > If you only want to comment out one line, you can put the cursor at any location of that line (i.e. no need to select the whole line), then press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd>.
 > **Comments are the most important lines in any R script!!**
 
-## Functions (or "commands")
+## R Functions
 
 Almost all or our R coding uses functions, which are essentially bits of code that have been written to do something.
 When we refer to functions we will generally do so following the convention `functionname()` the brackets are a giveaway that we are referring to a function.
@@ -587,7 +593,7 @@ Character data contain non numeric characters and are most often words.
 R understands character data to be everything enclosed within the quotation marks "".
 
 ```{r, eval= FALSE}
-"Lion", "tiger", "bear"
+"lion", "tiger", "bear"
 ```
 
 When we use this type of data in R we have to remember the "" otherwise R will assume that we are referring to objects (that may not have been created) of the same name and it likely to return an error.
@@ -633,10 +639,10 @@ myft
 
 We have already learned how to *assign* a *value* to an *object* but to do more complicated things in R we often need to store more than one value in a single object.
 
-### Vectors
+### Vectors and the `c()` function
 
 A vector is the most common and basic data type in R, a vector is composed by a series of values, which can be either numbers or characters.
-We can assign a series of values to a vector using the `c()` function.
+We can assign a series of values to a vector using the `c()` function which stands for "concatenate" or join several items (numbers, words etc.) into a single R object.
 For example we can create a vector of animal weights and assign it to a new object weight_kg
 
 ```{r}
@@ -651,8 +657,9 @@ animals <- c("lion", "tiger", "bear")
 
 We can inspect the contents of a vector, using functions such as `length()` and `class()` by giving these functions the name of the vector that we want to inspect.
 
-Using `length()` and `class()` inspect the vectors `weight_kg` and `animals` that we have just created to see if you can work out what these functions do.
-Edit the following two lines to put the correct text inside the `()` brackets:
+Using `length()` and `class()` inspect the vectors `weight_kg` and `animals` that we have just created to see if you can work out what these functions do:
+
+Go back to your R script in the top left of the RStudio screen, and add the following lines to store animal weights and names:
 
 ```{r vect-inspect, eval=FALSE}
 # Weights of three animals
@@ -693,8 +700,8 @@ We can use the `str()` function to look at the structure of the data frame.
 
 ```{r animals_structure}
 # Animals data
-weight_kg <- c(190, 310, 500)
-animals <- c("lion", "tiger", "bear")
+weight_kg <- c(190, 192, 189, 180, 185, 278, 310, 300, 294, 312, 400, 450, 500, 510, 425)
+animals <- c("lion", "lion", "lion", "lion", "lion", "tiger", "tiger", "tiger", "tiger", "tiger", "bear", "bear", "bear", "bear", "bear")
 
 # Put into a data.frame
 animals_df <- data.frame(animals, weight_kg)
@@ -703,10 +710,10 @@ animals_df <- data.frame(animals, weight_kg)
 str(animals_df)
 ```
 
-From this we can see that the data frame has 3 observations (rows) and 2 variables(columns), one called animals which contains character data and one called weight_kg which contains numeric data.
+From this we can see that the data frame has 15 observations (rows) and 2 variables(columns), one called animals which contains character data and one called weight_kg which contains numeric data.
 
 If we want to extract a specific column of a data frame we can do so using the `$` operator.
-To extract a specific value we can *index* it using the square brackets [] to specify the position by location using dataframe[rownumber,columnnumber]
+To extract a specific value we can *index* it using the square brackets `[]` to specify the position by location using `dataframe_name[rownumber,columnnumber]`
 
 ```{r animals_column, eval=FALSE}
 # Single column
@@ -731,6 +738,27 @@ These operations can be useful when we are dealing with small data frames but of
 Such information needs to be imported into R before we can start to interrogate the data frame.
 
 Remember the kitchen analogy - Data contained in a file on your computer is like an ingredient in your cupboard, to be able to use it you first need to put it on the kitchen counter, which means we need to import it in to R and assign it to an object so that it appears in our environment pane.
+
+You might be wondering why we entered our `animals_df` such that the names of the 3 species are repeated multiple times.
+This is called **long data format** and is the best format for data summaries, plots and statistical models.
+It aligns with the **goal-oriented philosophy** we use:
+
+::: center
+[**goal**]{.boxed} **( [y]{.boxed} \~ [x]{.boxed}, data = [mydata]{.boxed}, ... )**
+:::
+
+So let's think about it again for our animal weights. Suppose our goal is to calculate the average weight of each of the three species, stored in the `data.frame` (table object) `animals_df` which has two columns `animals` and `weight_kg`. The weight of the animal is the *response* so is place on the left of the *~* symbol, as it will be determined by the species of animal, which is the *explanatory* placed on the right of the *~* symbol:
+
+::: center
+[**mean**]{.boxed} **( [weight_kg]{.boxed} \~ [animals]{.boxed}, data = [animals_df]{.boxed})**
+:::
+
+Now you can translate this directly into R. Add the following line to the bottom of your R script in top left of RStudio and run it:
+
+```{r}
+mean(weight_kg ~ animals, data = animals_df)
+```
+
 
 # Importing and exporting data
 
