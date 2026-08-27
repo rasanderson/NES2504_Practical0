@@ -51,3 +51,5 @@ rsconnect/
 # Rmarkdown outputs
 *.pdf
 *.html
+*.docx
+Practical0_schedule_files/

@@ -1,13 +1,17 @@
 ---
-title: "Navigating R and RStudio"
-author: "NES2504"
-output:
-  html_document:
+title: "Session 0: Navigating R and RStudio"
+author: "Roy Sanderson, Will Reid"
+format:
+  html:
     df_print: paged
-    number_sections: true
+    number-sections: true
+    toc: true
+    toc-depth: 1
     css: custom.scss
-  word_document:
-    number_sections: true
+  docx:
+    toc: true
+    toc-depth: 1
+    number-sections: true
     reference_docx: template.docx
 editor_options: 
   markdown: 
@@ -20,6 +24,8 @@ library(dplyr)
 library(flextable)
 library(mosaic)
 ```
+
+Try to complete sections 1 to 10 of this introductory practical. Some sections are mainly reading material, so should not take too long. Please ask Demonstrators or Staff during the practical if you have any problems.
 
 # Aims and objectives of Practical 0
 
@@ -424,7 +430,7 @@ Please let myself or one of the demonstrators know if you have problems with thi
 **Where to store your CSV files?**
 
 You can store them either in your main project folder.
-Sometimes if you have lots of data files this can get confusing, so I generally recommend creating a folder called **`Data`** inside your `NES2303` project folder, and putting your CSV files there.
+Sometimes if you have lots of data files this can get confusing, so I generally recommend creating a folder called **`Data`** inside your `NES2504` project folder, and putting your CSV files there.
 The only difference is you need to change the `read.csv` command from:
 
 `pract0_dat <- read.csv("yield.csv")`
@@ -783,22 +789,13 @@ More detail about the sections of the help files can be found [here](https://soc
 
 **Error messages**
 
-Error messages can be difficult themselves to decode, the below graphic brakes things down a bit
+Error messages can be difficult themselves to decode, and you will definitely get some. Scroll up in your Console and find the error messages you obtained on your first attempts to read `yield.csv`. The below graphic breaks things down a bit and explains the difference between Warnings (probably OK) and Errors (always a problem):
 
 ```{r, echo = FALSE}
 knitr::include_graphics("images/rex_an_error.png")
 ```
 
-you can try Googling them, use ChatGTP or searching [Rseek](https://rseek.org/) a search engine specifically for R related materials.
-
-**Still stuck?** Please do not worry.
-R has a steep initial learning curve, so expect to hit problems.
-
-- Ask your classmates, they might have encountered the same or similar problem!
-- Make use of **Microsoft Teams NES2303**. Ask questions of staff and **answer questions from other students**
-- Check out the [`#`rstats](https://twitter.com/hashtag/rstats?lang=en) on twitter for useful advice.
-
-The community or R users are extremely welcoming and supportive so just remember you're not alone!
+you can try Googling them, use ChatGTP or searching [Rseek](https://rseek.org/) a search engine specifically for R related materials. **Still stuck?** Please do not worry. R has a steep initial learning curve, so expect to hit problems. The community or R users are extremely welcoming and supportive so just remember you're not alone!
 
 # Final steps before you finish
 **Before** you finish today, please remember to **Save** your `practical0.R` script. It should have the following contents. **NOTE** There is a subtle difference in the layout of the final script. I've added the following lines:
@@ -896,7 +893,7 @@ Understanding R requires you to understand what it is doing, and how to read its
 
 ## Books, online guides
 
-See the Canvas reading list for NES2303.
+See the Canvas reading list for NES2504.
 I have updated this with new resources for 2022, with most books in electronic format.
 There are also lots of excellent resources out there for learning R, some of those that we recommend are listed here and should be enough to keep you going
 
