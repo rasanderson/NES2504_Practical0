@@ -985,8 +985,8 @@ You can now correctly see the right column headings, and the `summary()` is corr
 One problem with "manual" restructuring in Excel is that it can be time-consuming, and it is very easy to make a mistake, e.g. by over-writing data when dragging and dropping columns, or miscounting data etc. An alternative is to restructure your data in R. We will import it directly from your original `awkward.csv` but skipping rows, then apply our own column headers, and finally stack the last two columns under the first two.
 
 ```{r}
-# Read in messy data skipping first two rows
-seeds_dat <- read.csv("Data/awkward.csv", skip = 2)
+# Read in messy data skipping first row that had merged cells
+seeds_dat <- read.csv("Data/awkward.csv", skip = 1)
 
 # Assign unique columnames, with _u or _g to indicate ungrazed or grazed, as
 # RStudio does not permit duplicate column names
