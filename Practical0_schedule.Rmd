@@ -954,7 +954,7 @@ There are two solutions to this problem, and we'll try both:
 2. Import into R and then restructure. This is more complicated, but is reproducible and ideal for big datasets.
 
 ## Restructure in Microsoft Excel
-Look at your .xlsx spreadsheet in Microsoft Excel, and ensure the 'Home' tab is selected. Make a note that the first 2 columns are Ungrazed, and the Second 2 columns are grazed. Also look at how many rows of data you have; the final set of data is on **Row 22** so with 2 header columns you have 10 rows of data. The steps to follow are:
+Look at your .xlsx spreadsheet in Microsoft Excel, and ensure the 'Home' tab is selected. Make a note that the first 2 columns are Ungrazed, and the Second 2 columns are grazed. Also look at how many rows of data you have; the final set of data is on **Row 22** so with 2 header columns you have 20 rows of data. The steps to follow are:
 
 * Delete the first row containing Ungrazed and Grazed by **Right-Click** on the **1** in the margin (which will highlight the entire row) and select **Delete**. The first row will be deleted, and the entire set of data will move up by one row.
 * Select all the numbers (but not the headers) in Columns C and D from the Grazed treatment, and **drag** them with the mouse to be immediately below the existing data for Ungrazed.
@@ -976,6 +976,7 @@ seeds_clean_dat <- read.csv("Data/cleaned.csv")
 # Check it looks OK
 summary(seeds_clean_dat)
 head(seeds_clean_dat)
+dim(seeds_clean_dat) # 40 rows by 3 columns
 ```
 
 You can now correctly see the right column headings, and the `summary()` is correctly treating all the data in `root` and `fruit` as numeric.
@@ -1012,7 +1013,10 @@ seeds_clean_dat <- rbind(
   )
 )
 
+# Check it is all as expected
 summary(seeds_clean_dat)
+head(seeds_clean_dat)
+dim(seeds_clean_dat)
 ```
 
 Again you can see clean output. Whilst there is more R code, it is easier to do long-term as it is more reproducible, and especially with big Excel spreadsheets avoids errors due to mis-placed cut and paste.
