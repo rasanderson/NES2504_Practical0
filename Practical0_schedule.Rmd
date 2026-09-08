@@ -29,7 +29,7 @@ library(mosaic)
 
 Try to complete sections 1 to 10 of this introductory practical. Some sections are mainly reading material, so should not take too long. Please ask Demonstrators or Staff during the practical if you have any problems.
 
-# Aims and objectives of Practical 0
+# Learning objectives
 
 The overall aim of this practical is to help you become more familiar with RStudio, what its main panels are for, how to download data from Canvas, and import it into R.
 Specific objectives include:
@@ -324,7 +324,7 @@ Just as you use headings and paragraphs to make an essay easier to read, use `#`
 
 ```{r, eval=FALSE}
 library(mosaic)
-pract0_dat<-read.csv("yield.csv")
+pract0_dat<-read.csv("Data/yield.csv")
 summary(pract0_dat)
 mean(yield~soil,data=pract0_dat)
 ```
@@ -342,7 +342,7 @@ A few key points:
 library(mosaic)
 
 # Import crop yields for different soils into a table pract0_dat
-pract0_dat <- read.csv("yield.csv")
+pract0_dat <- read.csv("Data/yield.csv")
 
 # Print out a summary of the data held in pract0_dat
 summary(pract0_dat)
@@ -366,14 +366,16 @@ However, when you hit Ctl-Shift-Enter on the `read.csv` line you should get the 
 What has gone wrong?
 We've just downloaded the file from Canvas yet R claims it is missing?
 The problem is that when you downloaded the data file from Canvas, it placed it into your **Downloads** folder.
-You need to move it to the **NES2504** folder, that already contains your project settings file, and your `practical0.R` file:
+You need to move it to the **NES2504/Data** folder, that already contains your project settings file, and your `practical0.R` file:
 
 - Start up the File Manager either from the main Windows menu, or by entering "File Manager" in the search bar
 - Navigate to your Downloads folder
 - Locate the `yield` file in your Downloads folder
 - Right-click on your `yield` file and select **Copy**
-- Navigate to your NES2504 folder, Right-click and select **Paste**
-- Go back to RStudio, and in the Files tab (bottom right) click on the "refresh" button (a small circular arrow on the right of the files tab). You should see the `yield` file listed.
+- Navigate to your NES2504 folder, Right-Click inside it and select **New Folder**. Call your new folde **Data**
+- Double-click on the Data icon to navigate into it
+- Right-click and select **Paste**
+- Go back to RStudio, and in the Files tab (bottom right) click on the "refresh" button (a small circular arrow on the right of the files tab). You should see the `Data` subfolder, and if you look inside it, you'll see the `yield` file listed.
 
 Now go back to your R script and try re-running the `read.csv` command by clicking on the line, and hitting the Ctrl-Shift-Enter key combination again.
 BUT **it does not work**.
@@ -389,30 +391,29 @@ What is this:
 - A standard Microsoft Excel file is a commercial-format file, that can be imported by a more limited range of software. It is much more complex as it can contain multiple tables, forumlae, graphs etc.
 
 So, finally we need to convert our Microsoft Excel file.
-Go back to your File Manager, navigate to the NES2504 folder (it might already be open) and double-click on the `yield` file to open it in Microsoft Excel.
-Then click on the **File -\> Save As** option, and in the drop-box below the filename, select the CSV option:
+Go back to your File Manager, navigate to the **NES2504/Data** folder (it might already be open) and double-click on the `yield` file to open it in Microsoft Excel.
+Then click on the **File -\> Save As** option, and in the drop-box below the filename, select the CSV option, to save it in your `Data` folder:
 
 ![](images/save_as_excel.png)
 
 Now close Excel; you may get a warning claiming you haven't saved your file (you have!), but Microsoft gets cross if you don't use its commercial file formats.
-Go back to your File Manager and you should see something similar to this:
-
-![](images/available_files.png)
+Go back to your File Manager and you should see two files called "yield" inside your `Data/` folder
 
 There are four files listed, although the default settings in File Manager does not give their full names (last few letters are omitted) which can cause confusion
 
-- `NES2504` which is actually `NES2504.RProj` and contains your RStudio project settings
-- `practical0` which is actually `practical0.R` and contains your script with R commands
 - `yield` which is `yield.csv` in Comma Separated Value format
 - `yield` which is `yield.xlsx` in Microsoft Excel format
 
-Look very carefully and you can see that the icons for the two yield files are slightly different, as one has **,a** in it.
-You can change the settings in File Manager so that full file names with the final "extension" are showing.
-For the bulk of the NES2504 course all the files will be CSV format, so you will not have this problem.
-But sometimes data will be in Excel format so it is essential you know how to convert to CSV.
+Look very carefully and you can see that the icons for the two yield files are slightly different, as one has **,a** in it. You can change the settings in File Manager so that full file names with the final "extension" are showing. For the bulk of the NES2504 course all the files will be CSV format, so you will not have this problem. But sometimes data will be in Excel format so it is essential you know how to convert to CSV.
 
-Go back to RStudio.
-Now you should be able to re-run your `read.csv` line.
+Stay in the File Manager and navigate one level higher to the **NES2504** folder. You should see 3 items
+
+- `Data` folder you've just created with your two `yield` files
+- `NES2504` which is actually `NES2504.RProj` and contains your RStudio project settings
+- `practical0` which is actually `practical0.R` and contains your script with R commands
+
+Go back to RStudio and re-run your `read.csv` line.
+
 If it is successful, nothing will be displayed in the console, but in your Environment window (top right panel) you should see the table (data frame) `pract0_dat` listed, and when you run the `summary(pract0_dat)` and `mean(yield ~ soil, data = pract0_dat)` commands you should see:
 
 ```{r, echo = FALSE, eval = TRUE}
@@ -426,28 +427,11 @@ summary(pract0_dat)
 mean(yield ~ soil, data = pract0_dat)
 ```
 
-Success!
-Please let myself or one of the demonstrators know if you have problems with this step.
+Success! **Important** Please speak to staff or the demonstrators know if you have problems with this step.
 
-**Where to store your CSV files?**
+## Where to store your CSV files?
 
-You can store them either in your main project folder.
-Sometimes if you have lots of data files this can get confusing, so I generally recommend creating a folder called **`Data`** inside your `NES2504` project folder, and putting your CSV files there.
-The only difference is you need to change the `read.csv` command from:
-
-`pract0_dat <- read.csv("yield.csv")`
-
-to
-
-`pract0_dat <- read.csv("Data/yield.csv")`
-
-My preference (and recommendation to you) is to put all your CSV files into a `Data` subfolder in your `NES2504` folder, in which case you'll need to remember to add `Data/` to any `read.csv` commands.
-That way your NES2404 folder is less likely to get cluttered as you go through the module.
-Do this now:
-
-- Open your Windows File Manager again (it might still be open), and inside your NES2504 folder create a new folder called 'Data'.
-- Move (click and drag) your two `yield` files (.xlsx and .csv) into your Data folder
-- Go back to RStudio and in your `practical0.R` script change the `read.csv` line to include the `Data` prefix as shown above. Run the code again to be sure it all works.
+You can store them either in your main project folder or your `Data` folder but if you have lots of data files this can get confusing, so we recommend creating a folder called **`Data`** inside your `NES2504` project folder, and putting your CSV files there.
 
 # Working with data
 
@@ -885,26 +869,12 @@ mean(weight_kg ~ animal_name, data = animals_df)
 write.csv(animals_df, path = "Data/animals.csv")
 ```
 
+# Take home messages from today's practical
+R and RStudio can be intimidating at first, but take your time and understand its structure. In particular:
 
-# Further resources
+* Always use an RStudio project as it makes file management simpler. Create a separate project for each Module in your degree where you have to analyse data
+* If you download Data files from the internet, you need to move them from the default **Downloads** folder to the project **Data** folder
+* Remember to convert conventional Microsoft Excel files to CSV files before importing them into RStudio
+* The R "script", `practical0.R` is all you need to save. Add lots of comments so it is easy to understand months later.
+* You can run lines sequentially from top to bottom in your `practical0.R` script to regenerate your entire workflow automatically
 
-## Background theory
-
-Please look at the **Ten-minute videos** (TMV) that provide clear background information **before** you attend each set of practicals.
-Understanding R requires you to understand what it is doing, and how to read its often cryptic outputs.
-
-## Books, online guides
-
-See the Canvas reading list for NES2504.
-I have updated this with new resources for 2022, with most books in electronic format.
-There are also lots of excellent resources out there for learning R, some of those that we recommend are listed here and should be enough to keep you going
-
-[learnR4free](http://learnR4free.com)
-
-[Data science box](http://datasciencebox.org)
-
-[Data carpentry](https://datacarpentry.org/R-ecology-lesson/index.html)
-
-[Our Coding Club - written by students for students](https://ourcodingclub.github.io/)
-
-These sites are for reference only.
