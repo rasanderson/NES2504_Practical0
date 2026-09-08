@@ -20,6 +20,27 @@ editor_options:
     wrap: sentence
 ---
 
+
+<style type="text/css">
+span.boxed {
+  border:5px solid gray;
+  border-radius:10px;
+  padding: 5px;
+}
+span.invboxed {
+  border:5px solid gray;
+  padding: 5px;
+  border-radius:10px;
+  color: white;
+}
+table, td, th
+{
+border:0px;
+}
+</style>
+
+
+
 ```{r setup, include=FALSE, warning = FALSE, message = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(dplyr)
@@ -701,15 +722,30 @@ You might be wondering why we entered our `animals_df` such that the names of th
 This is called **long data format** and is the best format for data summaries, plots and statistical models.
 It aligns with the **goal-oriented philosophy** we use:
 
-::: center
-[**goal**]{.boxed} **( [y]{.boxed} \~ [x]{.boxed}, data = [mydata]{.boxed}, ... )**
-:::
+&nbsp;
+
+<center>
+<h2><strong><span class="boxed">goal</span> ( <span class="boxed">y</span> ~ <span class="boxed">x</span> , data = <span class="boxed">mydata</span>, ... )</strong> 
+</h2></center>
+
+&nbsp;
+
+where:
+
++ **goal** = What you want to do; a statistical summary, data analysis, or graph
++ **y** = the name of the column containing the **response** variable
++ **x** = the name of the column containing an **explanatory** variable
++ **mydata** = name of your table of data, known in R as a **data.frame**
 
 So let's think about it again for our animal weights. Suppose our goal is to calculate the average weight of each of the three species, stored in the `data.frame` (table object) `animals_df` which has two columns `animal_name` and `weight_kg`. The weight of the animal is the *response* so is place on the left of the *~* symbol, as it will be determined by the species of animal, which is the *explanatory* placed on the right of the *~* symbol:
 
-::: center
-[**mean**]{.boxed} **( [weight_kg]{.boxed} \~ [animal_name]{.boxed}, data = [animals_df]{.boxed})**
-:::
+&nbsp;
+
+<center>
+<h2><strong><span class="boxed">mean</span> ( <span class="boxed">weight_kg</span> ~ <span class="boxed">animal_name</span> , data = <span class="boxed">animals_df</span>)</strong> 
+</h2></center>
+
+&nbsp;
 
 Now you can translate this directly into R. Add the following line to the bottom of your R script in top left of RStudio and run it:
 
