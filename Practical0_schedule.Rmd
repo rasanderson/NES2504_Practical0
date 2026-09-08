@@ -878,3 +878,105 @@ R and RStudio can be intimidating at first, but take your time and understand it
 * The R "script", `practical0.R` is all you need to save. Add lots of comments so it is easy to understand months later.
 * You can run lines sequentially from top to bottom in your `practical0.R` script to regenerate your entire workflow automatically
 
+# In your own time
+
+Sometimes Microsoft Excel files can look clear and attractive, but then prove difficult to use inside R. Download the 'awkward.xlsx' Excel file from Canvas and open it in Excel. It contains seed production weights, and the plant root sizes, under two different grazing regimes. At first sight it looks fine, with 4 columns of data for the root lengths and seed weights under the two grazing regimes:
+
+![](images/awkward_original.png)
+
+As usual, export it from Excel using the 'Save As' option as a CSV file inside your **NES2504/Data** folder. Now add the necessary R code, to import your CSV file:
+
+```{r}
+# Import CSV from badly structured Excel file
+seeds_dat <- read.csv("Data/awkward.csv")
+```
+
+No errors, so presumably everything is OK? Not so fast! Add a `summary` command to have a look at your data and you'll spot there is a problem:
+
+```{r}
+# Import CSV from badly structured Excel file
+seeds_dat <- read.csv("Data/awkward.csv")
+
+# Check data format with summary
+summary(seeds_dat)
+```
+
+You seem to have gained 2 mysterious columns called **X** and **X.2** which aren't in the original dataset, and there is no indication of which columns are `Root` or `Fruit`. Also look carefully at the `summary()` results: there are no means, medians, min, or max etc. as you would expect. What has gone wrong? Let's look at the first few lines using the `head()` function:
+
+```{r}
+head(seeds_dat)
+```
+
+Now the problem is clear. There were of course **two** header rows in your Excel file; the `read.csv()` has accidentally imported the second header row containing `Root` or `Fruit` into the first row of data. This has confused R, which now has a mixture of text and numbers in the same data.
+
+## Where have X and X.1 appeared from?
+Open your original Microsoft Excel spreadsheet (not the CSV) and look carefully at the two cells which contain `Ungrazed` and `Grazed`. Notice how the width of these cells is twice that of the rows below them: they are **merged** cells. This is quite common in Microsoft Excel, but generates a column with no header when converted to CSV, which R auto-names X, X.1, X.2, X.3 etc.
+
+There are two solutions to this problem, and we'll try both:
+
+1. Restructure the data in Excel first. This is probably the simplest method for small datasets like this one.
+2. Import into R and then restructure. This is more complicated, but is reproducible and ideal for big datasets.
+
+## Restructure in Microsoft Excel
+Look at your .xlsx spreadsheet in Microsoft Excel, and ensure the 'Home' tab is selected. Make a note that the first 2 columns are Ungrazed, and the Second 2 columns are grazed. Also look at how many rows of data you have; the final set of data is on **Row 22** so with 2 header columns you have 10 rows of data. The steps to follow are:
+
+* Delete the first row containing Ungrazed and Grazed by **Right-Click** on the **1** in the margin (which will highlight the entire row) and select **Delete**. The first row will be deleted, and the entire set of data will move up by one row.
+* Select all the numbers (but not the headers) in Columns C and D from the Grazed treatment, and **drag** them with the mouse to be immediately below the existing data for Ungrazed.
+* **Right-Click** on Column D, which highlights the whole column, and select **Delete**
+* In Column C, change the title from "Root" to **management**. I suggest you rename columns A and B from Root and Fruit to "root" and "fruit" (lower case) to avoid confusion in R.
+* In the management column, enter the word **ungrazed** in cell C2, and drag this down as far as cell C21; Excel will auto-fill the empty cells for you. Remember you have 20 replicates of each management treatment
+* In cell C22 enter the word **grazed**. Double-click on the corner, and it will auto-fill to the end of the table.
+
+You should see something similar to the following:
+
+![](images/awkward_restructured.png)
+
+You can now export this revised file to file `cleaned.csv` inside your `Data` folder. When you read this in and check it, the data look fine:
+
+```{r}
+# Read and check pre-cleaned data
+seeds_clean_dat <- read.csv("Data/cleaned.csv")
+
+# Check it looks OK
+summary(seeds_clean_dat)
+head(seeds_clean_dat)
+```
+
+You can now correctly see the right column headings, and the `summary()` is correctly treating all the data in `root` and `fruit` as numeric.
+
+## Restructure in RStudio
+One problem with "manual" restructuring in Excel is that it can be time-consuming, and it is very easy to make a mistake, e.g. by over-writing data when dragging and dropping columns, or miscounting data etc. An alternative is to restructure your data in R. We will import it directly from your original `awkward.csv` but skipping rows, then apply our own column headers, and finally stack the last two columns under the first two.
+
+```{r}
+# Read in messy data skipping first two rows
+seeds_dat <- read.csv("Data/awkward.csv", skip = 2)
+
+# Assign unique columnames, with _u or _g to indicate ungrazed or grazed, as
+# RStudio does not permit duplicate column names
+colnames(seeds_dat) <- c("root_u", "fruit_u", "root_g", "fruit_g")
+
+# Check data format with summary
+summary(seeds_dat) # Note how data are correct with means, medians etc.
+```
+
+Now we simply stack the last two columns on top of the first two using `rbind()` which means "bind rows together". Recall that we can use the `$` symbol to access individual named columns. In effect we create two unamed `data.frame` objects, one for ungrazed, the other grazed, then immediately bind their rows together.
+
+```{r}
+# Stack columns on top of each other
+seeds_clean_dat <- rbind(
+  data.frame(  # First temporary data.frame for ungrazed 
+    root = seeds_dat$root_u,
+    fruit = seeds_dat$fruit_u,
+    management = "ungrazed"
+  ),
+  data.frame( # Second temporary data.frame for grazed
+    root = seeds_dat$root_g,
+    fruit = seeds_dat$fruit_g,
+    management = "grazed"
+  )
+)
+
+summary(seeds_clean_dat)
+```
+
+Again you can see clean output. Whilst there is more R code, it is easier to do long-term as it is more reproducible, and especially with big Excel spreadsheets avoids errors due to mis-placed cut and paste.
