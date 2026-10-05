@@ -20,7 +20,7 @@ editor_options:
     wrap: sentence
 ---
 
-
+```{=html}
 <style type="text/css">
 span.boxed {
   border:5px solid gray;
@@ -38,8 +38,7 @@ table, td, th
 border:0px;
 }
 </style>
-
-
+```
 
 ```{r setup, include=FALSE, warning = FALSE, message = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -48,7 +47,9 @@ library(flextable)
 library(mosaic)
 ```
 
-Try to complete sections 1 to 10 of this introductory practical. Some sections are mainly reading material, so should not take too long. Please ask Demonstrators or Staff during the practical if you have any problems.
+Try to complete sections 1 to 10 of this introductory practical.
+Some sections are mainly reading material, so should not take too long.
+Please ask Demonstrators or Staff during the practical if you have any problems.
 
 # Learning objectives
 
@@ -425,9 +426,13 @@ There are four files listed, although the default settings in File Manager does 
 - `yield` which is `yield.csv` in Comma Separated Value format
 - `yield` which is `yield.xlsx` in Microsoft Excel format
 
-Look very carefully and you can see that the icons for the two yield files are slightly different, as one has **,a** in it. You can change the settings in File Manager so that full file names with the final "extension" are showing. For the bulk of the NES2504 course all the files will be CSV format, so you will not have this problem. But sometimes data will be in Excel format so it is essential you know how to convert to CSV.
+Look very carefully and you can see that the icons for the two yield files are slightly different, as one has **,a** in it.
+You can change the settings in File Manager so that full file names with the final "extension" are showing.
+For the bulk of the NES2504 course all the files will be CSV format, so you will not have this problem.
+But sometimes data will be in Excel format so it is essential you know how to convert to CSV.
 
-Stay in the File Manager and navigate one level higher to the **NES2504** folder. You should see 3 items
+Stay in the File Manager and navigate one level higher to the **NES2504** folder.
+You should see 3 items
 
 - `Data` folder you've just created with your two `yield` files
 - `NES2504` which is actually `NES2504.RProj` and contains your RStudio project settings
@@ -448,7 +453,8 @@ summary(pract0_dat)
 mean(yield ~ soil, data = pract0_dat)
 ```
 
-Success! **Important** Please speak to staff or the demonstrators know if you have problems with this step.
+Success!
+**Important** Please speak to staff or the demonstrators know if you have problems with this step.
 
 ## Where to store your CSV files?
 
@@ -468,7 +474,8 @@ log(24)
 pi * 3 ^ 2
 ```
 
-As you have typed the above into the Console window it isn't saved after you finish today's practical, but it doesn't matter for some quick temporary calculations. Individual numbers, columns, rows, or tables of data, the results from calculations, statistical analyses and graphs are all **R objects** and the ones you have created in your current RStudio are shown in the top right **Environment** panel.
+As you have typed the above into the Console window it isn't saved after you finish today's practical, but it doesn't matter for some quick temporary calculations.
+Individual numbers, columns, rows, or tables of data, the results from calculations, statistical analyses and graphs are all **R objects** and the ones you have created in your current RStudio are shown in the top right **Environment** panel.
 
 As mentioned before R is a programming language, as with any language there is some vocab that needs to be covered in order to help your understanding of what is being described.
 
@@ -496,7 +503,8 @@ Poor names:
 - `Bird_wght` You will forget the upper-case `B` and whether it is `wght`, `Wght`, `weight` etc.
 - `bacterialgrowth` Rather long and difficult to read
 
-For example, if you are 175 cm tall, you can assign your height to an R object, and display it again easily. Type the following into your RStudio script editor (top left) at the bottom of your `practical0.R` script:
+For example, if you are 175 cm tall, you can assign your height to an R object, and display it again easily.
+Type the following into your RStudio script editor (top left) at the bottom of your `practical0.R` script:
 
 ```{r your-height, eval = FALSE}
 # Assign my height in cm to R variable (object) called my_height
@@ -505,6 +513,7 @@ my_height <- 175
 # Display the contents of my_height (it will show in the R Console)
 my_height
 ```
+
 ```{r your-height-noecho, eval = TRUE, echo=FALSE}
 # Assign my height in cm to R variable (object) called my_height
 my_height <- 175
@@ -522,7 +531,8 @@ my_height/2.54
 ```
 
 Look in the Environment window (top-right of RStudio): notice that the *value* of `my_height` is still in cm, why?
-Because we didn't store your height in inches as an object, let's do that now. Amend your `practical0.R` script to read:
+Because we didn't store your height in inches as an object, let's do that now.
+Amend your `practical0.R` script to read:
 
 ```{r your-height-inch, eval=FALSE}
 # Assign my height in cm to R variable (object) called my_height
@@ -535,7 +545,8 @@ my_height_inch <- my_height/2.54
 my_height_inch
 ```
 
-Look in your Environment window (top right of RStudio) and notice how the new R objects are listed. These are not saved after you exit RStudio, but can be quickly regenerated by re-running your `practical0.R` script.
+Look in your Environment window (top right of RStudio) and notice how the new R objects are listed.
+These are not saved after you exit RStudio, but can be quickly regenerated by re-running your `practical0.R` script.
 
 > ### Comments
 >
@@ -553,7 +564,9 @@ Functions take *arguments*, the arguments (inputs) are specified within the brac
 We have already used the `read.csv` function, and gave it the argument "yield.csv" to import some data into R.
 
 Lets use the function `sqrt()` as an example.
-The argument to this function is a value (or an object that contains a value) for which we want to calculate the square root. When we run a function it returns an output that is the square root of the input value. Edit your `practical0.R` script to add the following lines at the bottom, and run them:
+The argument to this function is a value (or an object that contains a value) for which we want to calculate the square root.
+When we run a function it returns an output that is the square root of the input value.
+Edit your `practical0.R` script to add the following lines at the bottom, and run them:
 
 ```{r function1, eval=FALSE}
 # Run the function on a number, to find square-root of 10
@@ -640,7 +653,8 @@ We have already learned how to *assign* a *value* to an *object* but to do more 
 
 A vector is the most common and basic data type in R, a vector is composed by a series of values, which can be either numbers or characters.
 We can assign a series of values to a vector using the `c()` function which stands for "concatenate" or join several items (numbers, words etc.) into a single R object.
-For example we can create a vector of animal weights and assign it to a new object `weight_kg`, and the common names of each species in `animal_name`. Look at the following code, but don't type it in yet:
+For example we can create a vector of animal weights and assign it to a new object `weight_kg`, and the common names of each species in `animal_name`.
+Look at the following code, but don't type it in yet:
 
 ```{r vect-inspect, eval=FALSE}
 # Weights of 15 animals
@@ -659,6 +673,7 @@ weight_kg <- c(190, 192, 189, 180, 185, 278, 310, 300, 294, 312, 400, 450, 500, 
 # Species names; three species, 5 animals per species
 animal_name <- rep(c("lion", "tiger", "bear"), each = 5)
 ```
+
 ```{r, eval=FALSE}
 # Weights of 15 animals
 weight_kg <- c(190, 192, 189, 180, 185, 278, 310, 300, 294, 312, 400, 450, 500, 510, 425)
@@ -675,12 +690,15 @@ class(weight_kg)
 class(animal_name)
 ```
 
-Your vectors `weight_kg` and `animal_name` each contain 15 items of data, one numeric, the other character (text) information. A vector can only contain items of the same type of data.
+Your vectors `weight_kg` and `animal_name` each contain 15 items of data, one numeric, the other character (text) information.
+A vector can only contain items of the same type of data.
 
 ### Data frames
 
-This is the best R object for storing your data in. It is basically a table of data, with columns of numbers or text so is useful for different data types that we want to keep together. We will now combine `weight_kg` and `animal_name` into a single table (data frame) using the `data.frame()` function. Add the following lines to your `practical0.R` script:
-
+This is the best R object for storing your data in.
+It is basically a table of data, with columns of numbers or text so is useful for different data types that we want to keep together.
+We will now combine `weight_kg` and `animal_name` into a single table (data frame) using the `data.frame()` function.
+Add the following lines to your `practical0.R` script:
 
 ```{r animals_dataframe, eval=FALSE, echo=TRUE}
 # create an R table (data frame) to store all the animals data
@@ -689,15 +707,18 @@ animals_df <- data.frame(animal_name, weight_kg)
 # Display the contents data frame
 animals_df
 ```
+
 ```{r animals_dataframe_noecho, eval=TRUE, echo=FALSE}
 # create an R table (data frame) to store all the animals data
 animals_df <- data.frame(animal_name, weight_kg)
 ```
 
+You can also display the contents of `animals_df` by double-clicking on its name in the RStudio Environment window (top-right).
+We now have something that might look more familiar to those of us that are used to working with data in Microsoft Excel.
 
-You can also display the contents of `animals_df` by double-clicking on its name in the RStudio Environment window (top-right). We now have something that might look more familiar to those of us that are used to working with data in Microsoft Excel.
-
-If we want to extract a specific column of a data frame we can do so using the `$` operator. To extract a specific value we can *index* it using the square brackets `[]` to specify the position by location using `dataframe_name[rownumber,columnnumber]`. Edit your `practical0.R` script by adding the following at the end:
+If we want to extract a specific column of a data frame we can do so using the `$` operator.
+To extract a specific value we can *index* it using the square brackets `[]` to specify the position by location using `dataframe_name[rownumber,columnnumber]`.
+Edit your `practical0.R` script by adding the following at the end:
 
 ```{r animals_column, eval=FALSE}
 # Display a single column; it will show as a row in the R Console
@@ -716,45 +737,55 @@ animals_df[2,1]  # Second row, first column
 
 ```
 
-These operations can be useful when we are dealing with small data frames but often when we are working with data we have large datasets, perhaps contained in spreadsheets on your computer or downloaded from the net. Such information needs to be imported into R before we can start to interrogate the data frame. Remember the kitchen analogy - Data contained in a file on your computer is like an ingredient in your cupboard, to be able to use it you first need to put it on the kitchen counter, which means we need to import it in to R and assign it to an object so that it appears in our environment pane.
+These operations can be useful when we are dealing with small data frames but often when we are working with data we have large datasets, perhaps contained in spreadsheets on your computer or downloaded from the net.
+Such information needs to be imported into R before we can start to interrogate the data frame.
+Remember the kitchen analogy - Data contained in a file on your computer is like an ingredient in your cupboard, to be able to use it you first need to put it on the kitchen counter, which means we need to import it in to R and assign it to an object so that it appears in our environment pane.
 
 You might be wondering why we entered our `animals_df` such that the names of the 3 species are repeated multiple times.
 This is called **long data format** and is the best format for data summaries, plots and statistical models.
 It aligns with the **goal-oriented philosophy** we use:
 
-&nbsp;
+ 
 
 <center>
-<h2><strong><span class="boxed">goal</span> ( <span class="boxed">y</span> ~ <span class="boxed">x</span> , data = <span class="boxed">mydata</span>, ... )</strong> 
-</h2></center>
 
-&nbsp;
+<h2><strong>[goal]{.boxed} ( [y]{.boxed} \~ [x]{.boxed} , data = [mydata]{.boxed}, ... )</strong></h2>
+
+</center>
+
+ 
 
 where:
 
-+ **goal** = What you want to do; a statistical summary, data analysis, or graph
-+ **y** = the name of the column containing the **response** variable
-+ **x** = the name of the column containing an **explanatory** variable
-+ **mydata** = name of your table of data, known in R as a **data.frame**
+- **goal** = What you want to do; a statistical summary, data analysis, or graph
+- **y** = the name of the column containing the **response** variable
+- **x** = the name of the column containing an **explanatory** variable
+- **mydata** = name of your table of data, known in R as a **data.frame**
 
-So let's think about it again for our animal weights. Suppose our goal is to calculate the average weight of each of the three species, stored in the `data.frame` (table object) `animals_df` which has two columns `animal_name` and `weight_kg`. The weight of the animal is the *response* so is place on the left of the *~* symbol, as it will be determined by the species of animal, which is the *explanatory* placed on the right of the *~* symbol:
+So let's think about it again for our animal weights.
+Suppose our goal is to calculate the average weight of each of the three species, stored in the `data.frame` (table object) `animals_df` which has two columns `animal_name` and `weight_kg`.
+The weight of the animal is the *response* so is place on the left of the *\~* symbol, as it will be determined by the species of animal, which is the *explanatory* placed on the right of the *\~* symbol:
 
-&nbsp;
+ 
 
 <center>
-<h2><strong><span class="boxed">mean</span> ( <span class="boxed">weight_kg</span> ~ <span class="boxed">animal_name</span> , data = <span class="boxed">animals_df</span>)</strong> 
-</h2></center>
 
-&nbsp;
+<h2><strong>[mean]{.boxed} ( [weight_kg]{.boxed} \~ [animal_name]{.boxed} , data = [animals_df]{.boxed})</strong></h2>
 
-Now you can translate this directly into R. Add the following line to the bottom of your R script in top left of RStudio and run it:
+</center>
+
+ 
+
+Now you can translate this directly into R.
+Add the following line to the bottom of your R script in top left of RStudio and run it:
 
 ```{r, eval=FALSE}
 # Calculate average weight of each animal species
 mean(weight_kg ~ animal_name, data = animals_df)
 ```
 
-This gives you a clear summary of your weights. In future practicals we will change `mean` to other "goals" including plotting and analysing your data.
+This gives you a clear summary of your weights.
+In future practicals we will change `mean` to other "goals" including plotting and analysing your data.
 
 # Importing and exporting data
 
@@ -774,14 +805,19 @@ This makes them the most useful "general" format for storing data.
 Once we have manipulated our data we may want to save it as a file that we can then share with others.
 Data can be saved to `.csv` files using the `write.csv` function.
 
-The code is similar to that used to read data in, it requires the filepath specifying where you want to save the file which includes the name that you want to give to the file, and it requires the name of the object that is being written (saved). Suppose you want to use your `animals_df` data or anything else you generate in R in Microsoft Excel. Add this to the end of your `practical0.R` script:
+The code is similar to that used to read data in, it requires the filepath specifying where you want to save the file which includes the name that you want to give to the file, and it requires the name of the object that is being written (saved).
+Suppose you want to use your `animals_df` data or anything else you generate in R in Microsoft Excel.
+Add this to the end of your `practical0.R` script:
 
 ```{r, eval = FALSE, echo = TRUE}
 # Save contents of animal weights data to csv file
-write.csv(animals_df, path = "Data/animals.csv")
+write.csv(animals_df, file = "Data/animals.csv")
 ```
 
-Open up your Windows File Manager and navigate to your `NES2504\Data` folder. Double-click on the "animals" icon and it should open for you in Microsoft Excel. **WARNING** Sometimes NUIT PCs are badly configured and may open CSV files in Minitab. Please ask if this happens.
+Open up your Windows File Manager and navigate to your `NES2504\Data` folder.
+Double-click on the "animals" icon and it should open for you in Microsoft Excel.
+**WARNING** Sometimes NUIT PCs are badly configured and may open CSV files in Minitab.
+Please ask if this happens.
 
 ### Saving plots
 
@@ -811,16 +847,25 @@ More detail about the sections of the help files can be found [here](https://soc
 
 **Error messages**
 
-Error messages can be difficult themselves to decode, and you will definitely get some. Scroll up in your Console and find the error messages you obtained on your first attempts to read `yield.csv`. The below graphic breaks things down a bit and explains the difference between Warnings (probably OK) and Errors (always a problem):
+Error messages can be difficult themselves to decode, and you will definitely get some.
+Scroll up in your Console and find the error messages you obtained on your first attempts to read `yield.csv`.
+The below graphic breaks things down a bit and explains the difference between Warnings (probably OK) and Errors (always a problem):
 
 ```{r, echo = FALSE}
 knitr::include_graphics("images/rex_an_error.png")
 ```
 
-you can try Googling them, use ChatGTP or searching [Rseek](https://rseek.org/) a search engine specifically for R related materials. **Still stuck?** Please do not worry. R has a steep initial learning curve, so expect to hit problems. The community or R users are extremely welcoming and supportive so just remember you're not alone!
+you can try Googling them, use ChatGTP or searching [Rseek](https://rseek.org/) a search engine specifically for R related materials.
+**Still stuck?** Please do not worry.
+R has a steep initial learning curve, so expect to hit problems.
+The community or R users are extremely welcoming and supportive so just remember you're not alone!
 
 # Final steps before you finish
-**Before** you finish today, please remember to **Save** your `practical0.R` script. It should have the following contents. **NOTE** There is a subtle difference in the layout of the final script. I've added the following lines:
+
+**Before** you finish today, please remember to **Save** your `practical0.R` script.
+It should have the following contents.
+**NOTE** There is a subtle difference in the layout of the final script.
+I've added the following lines:
 
 ```{r, eval=FALSE}
 # Crop yields example ####
@@ -828,7 +873,9 @@ you can try Googling them, use ChatGTP or searching [Rseek](https://rseek.org/) 
 # Big fierce animal weights example ####
 ```
 
-As you will discover, R scripts can get quite long, so it is useful to have subheading comments. Note that these three comments all end `####`. If you click on the **Outline** button at the top right of your R `practical0.R` editor screen, a side-panel will open, which allows you to navigate to any of these sub-headings with one click, so you don't get lost!
+As you will discover, R scripts can get quite long, so it is useful to have subheading comments.
+Note that these three comments all end `####`.
+If you click on the **Outline** button at the top right of your R `practical0.R` editor screen, a side-panel will open, which allows you to navigate to any of these sub-headings with one click, so you don't get lost!
 
 ```{r, eval=FALSE}
 # Practical 0: Revision and R basics
@@ -906,28 +953,36 @@ write.csv(animals_df, path = "Data/animals.csv")
 ```
 
 # Take home messages from today's practical
-R and RStudio can be intimidating at first, but take your time and understand its structure. In particular:
 
-* Always use an RStudio project as it makes file management simpler. Create a separate project for each Module in your degree where you have to analyse data
-* If you download Data files from the internet, you need to move them from the default **Downloads** folder to the project **Data** folder
-* Remember to convert conventional Microsoft Excel files to CSV files before importing them into RStudio
-* The R "script", `practical0.R` is all you need to save. Add lots of comments so it is easy to understand months later.
-* You can run lines sequentially from top to bottom in your `practical0.R` script to regenerate your entire workflow automatically
+R and RStudio can be intimidating at first, but take your time and understand its structure.
+In particular:
+
+- Always use an RStudio project as it makes file management simpler. Create a separate project for each Module in your degree where you have to analyse data
+- If you download Data files from the internet, you need to move them from the default **Downloads** folder to the project **Data** folder
+- Remember to convert conventional Microsoft Excel files to CSV files before importing them into RStudio
+- The R "script", `practical0.R` is all you need to save. Add lots of comments so it is easy to understand months later.
+- You can run lines sequentially from top to bottom in your `practical0.R` script to regenerate your entire workflow automatically
 
 # In your own time
 
-Sometimes Microsoft Excel files can look clear and attractive, but then prove difficult to use inside R. Download the 'awkward.xlsx' Excel file from Canvas and open it in Excel. It contains seed production weights, and the plant root sizes, under two different grazing regimes. At first sight it looks fine, with 4 columns of data for the root lengths and seed weights under the two grazing regimes:
+Sometimes Microsoft Excel files can look clear and attractive, but then prove difficult to use inside R.
+Download the 'awkward.xlsx' Excel file from Canvas and open it in Excel.
+It contains seed production weights, and the plant root sizes, under two different grazing regimes.
+At first sight it looks fine, with 4 columns of data for the root lengths and seed weights under the two grazing regimes:
 
 ![](images/awkward_original.png)
 
-As usual, export it from Excel using the 'Save As' option as a CSV file inside your **NES2504/Data** folder. Now add the necessary R code, to import your CSV file:
+As usual, export it from Excel using the 'Save As' option as a CSV file inside your **NES2504/Data** folder.
+Now add the necessary R code, to import your CSV file:
 
 ```{r}
 # Import CSV from badly structured Excel file
 seeds_dat <- read.csv("Data/awkward.csv")
 ```
 
-No errors, so presumably everything is OK? Not so fast! Add a `summary` command to have a look at your data and you'll spot there is a problem:
+No errors, so presumably everything is OK?
+Not so fast!
+Add a `summary` command to have a look at your data and you'll spot there is a problem:
 
 ```{r}
 # Import CSV from badly structured Excel file
@@ -937,37 +992,50 @@ seeds_dat <- read.csv("Data/awkward.csv")
 summary(seeds_dat)
 ```
 
-You seem to have gained 2 mysterious columns called **X** and **X.2** which aren't in the original dataset, and there is no indication of which columns are `Root` or `Fruit`. Also look carefully at the `summary()` results: there are no means, medians, min, or max etc. as you would expect. What has gone wrong? Let's look at the first few lines using the `head()` function:
+You seem to have gained 2 mysterious columns called **X** and **X.2** which aren't in the original dataset, and there is no indication of which columns are `Root` or `Fruit`.
+Also look carefully at the `summary()` results: there are no means, medians, min, or max etc. as you would expect.
+What has gone wrong?
+Let's look at the first few lines using the `head()` function:
 
 ```{r}
 head(seeds_dat)
 ```
 
-Now the problem is clear. There were of course **two** header rows in your Excel file; the `read.csv()` has accidentally imported the second header row containing `Root` or `Fruit` into the first row of data. This has confused R, which now has a mixture of text and numbers in the same data.
+Now the problem is clear.
+There were of course **two** header rows in your Excel file; the `read.csv()` has accidentally imported the second header row containing `Root` or `Fruit` into the first row of data.
+This has confused R, which now has a mixture of text and numbers in the same data.
 
 ## Where have X and X.1 appeared from?
-Open your original Microsoft Excel spreadsheet (not the CSV) and look carefully at the two cells which contain `Ungrazed` and `Grazed`. Notice how the width of these cells is twice that of the rows below them: they are **merged** cells. This is quite common in Microsoft Excel, but generates a column with no header when converted to CSV, which R auto-names X, X.1, X.2, X.3 etc.
+
+Open your original Microsoft Excel spreadsheet (not the CSV) and look carefully at the two cells which contain `Ungrazed` and `Grazed`.
+Notice how the width of these cells is twice that of the rows below them: they are **merged** cells.
+This is quite common in Microsoft Excel, but generates a column with no header when converted to CSV, which R auto-names X, X.1, X.2, X.3 etc.
 
 There are two solutions to this problem, and we'll try both:
 
-1. Restructure the data in Excel first. This is probably the simplest method for small datasets like this one.
-2. Import into R and then restructure. This is more complicated, but is reproducible and ideal for big datasets.
+1.  Restructure the data in Excel first. This is probably the simplest method for small datasets like this one.
+2.  Import into R and then restructure. This is more complicated, but is reproducible and ideal for big datasets.
 
 ## Restructure in Microsoft Excel
-Look at your .xlsx spreadsheet in Microsoft Excel, and ensure the 'Home' tab is selected. Make a note that the first 2 columns are Ungrazed, and the Second 2 columns are grazed. Also look at how many rows of data you have; the final set of data is on **Row 22** so with 2 header columns you have 20 rows of data. The steps to follow are:
 
-* Delete the first row containing Ungrazed and Grazed by **Right-Click** on the **1** in the margin (which will highlight the entire row) and select **Delete**. The first row will be deleted, and the entire set of data will move up by one row.
-* Select all the numbers (but not the headers) in Columns C and D from the Grazed treatment, and **drag** them with the mouse to be immediately below the existing data for Ungrazed.
-* **Right-Click** on Column D, which highlights the whole column, and select **Delete**
-* In Column C, change the title from "Root" to **management**. I suggest you rename columns A and B from Root and Fruit to "root" and "fruit" (lower case) to avoid confusion in R.
-* In the management column, enter the word **ungrazed** in cell C2, and drag this down as far as cell C21; Excel will auto-fill the empty cells for you. Remember you have 20 replicates of each management treatment
-* In cell C22 enter the word **grazed**. Double-click on the corner, and it will auto-fill to the end of the table.
+Look at your .xlsx spreadsheet in Microsoft Excel, and ensure the 'Home' tab is selected.
+Make a note that the first 2 columns are Ungrazed, and the Second 2 columns are grazed.
+Also look at how many rows of data you have; the final set of data is on **Row 22** so with 2 header columns you have 20 rows of data.
+The steps to follow are:
+
+- Delete the first row containing Ungrazed and Grazed by **Right-Click** on the **1** in the margin (which will highlight the entire row) and select **Delete**. The first row will be deleted, and the entire set of data will move up by one row.
+- Select all the numbers (but not the headers) in Columns C and D from the Grazed treatment, and **drag** them with the mouse to be immediately below the existing data for Ungrazed.
+- **Right-Click** on Column D, which highlights the whole column, and select **Delete**
+- In Column C, change the title from "Root" to **management**. I suggest you rename columns A and B from Root and Fruit to "root" and "fruit" (lower case) to avoid confusion in R.
+- In the management column, enter the word **ungrazed** in cell C2, and drag this down as far as cell C21; Excel will auto-fill the empty cells for you. Remember you have 20 replicates of each management treatment
+- In cell C22 enter the word **grazed**. Double-click on the corner, and it will auto-fill to the end of the table.
 
 You should see something similar to the following:
 
 ![](images/awkward_restructured.png)
 
-You can now export this revised file to file `cleaned.csv` inside your `Data` folder. When you read this in and check it, the data look fine:
+You can now export this revised file to file `cleaned.csv` inside your `Data` folder.
+When you read this in and check it, the data look fine:
 
 ```{r}
 # Read and check pre-cleaned data
@@ -982,7 +1050,10 @@ dim(seeds_clean_dat) # 40 rows by 3 columns
 You can now correctly see the right column headings, and the `summary()` is correctly treating all the data in `root` and `fruit` as numeric.
 
 ## Restructure in RStudio
-One problem with "manual" restructuring in Excel is that it can be time-consuming, and it is very easy to make a mistake, e.g. by over-writing data when dragging and dropping columns, or miscounting data etc. An alternative is to restructure your data in R. We will import it directly from your original `awkward.csv` but skipping rows, then apply our own column headers, and finally stack the last two columns under the first two.
+
+One problem with "manual" restructuring in Excel is that it can be time-consuming, and it is very easy to make a mistake, e.g. by over-writing data when dragging and dropping columns, or miscounting data etc.
+An alternative is to restructure your data in R.
+We will import it directly from your original `awkward.csv` but skipping rows, then apply our own column headers, and finally stack the last two columns under the first two.
 
 ```{r}
 # Read in messy data skipping first row that had merged cells
@@ -996,7 +1067,9 @@ colnames(seeds_dat) <- c("root_u", "fruit_u", "root_g", "fruit_g")
 summary(seeds_dat) # Note how data are correct with means, medians etc.
 ```
 
-Now we simply stack the last two columns on top of the first two using `rbind()` which means "bind rows together". Recall that we can use the `$` symbol to access individual named columns. In effect we create two unamed `data.frame` objects, one for ungrazed, the other grazed, then immediately bind their rows together.
+Now we simply stack the last two columns on top of the first two using `rbind()` which means "bind rows together".
+Recall that we can use the `$` symbol to access individual named columns.
+In effect we create two unamed `data.frame` objects, one for ungrazed, the other grazed, then immediately bind their rows together.
 
 ```{r}
 # Stack columns on top of each other
@@ -1019,4 +1092,5 @@ head(seeds_clean_dat)
 dim(seeds_clean_dat)
 ```
 
-Again you can see clean output. Whilst there is more R code, it is easier to do long-term as it is more reproducible, and especially with big Excel spreadsheets avoids errors due to mis-placed cut and paste.
+Again you can see clean output.
+Whilst there is more R code, it is easier to do long-term as it is more reproducible, and especially with big Excel spreadsheets avoids errors due to mis-placed cut and paste.
