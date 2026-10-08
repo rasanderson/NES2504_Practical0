@@ -215,7 +215,7 @@ Installing an R package simply puts the extra software on your PC, but it does n
 This is because you may have many packages eventually installed, that might have commands with identical names but which do different things.
 To take a simple example, in some packages the `plot` command will create a map, whereas in other packages it might display a genome phylogeny, and you would not want to confuse them.
 Therefore, in any R session you generally only make available the packages you need.
-To make the commands from a package available to use, enter the `library` command followed by the package name, for exampe (you don't need to do this now):
+To make the commands from a package available to use, enter the `library` command followed by the package name, for example as follows **do not type the following yet**:
 
 ```{r, eval=FALSE}
 library(mosaic)
@@ -264,7 +264,11 @@ Once you have created a project, all you need to do in is:
 
 # Navigating RStudio
 
-In the top left click `file` \> `new file` \> `R script` and now you should have four windows that look something like this:
+In the top left click:
+
+**File -> New file -> R script**
+
+and now you should have four windows that look something like this:
 
 ```{r, echo = FALSE}
 knitr::include_graphics("images/Rstudio4packages.png")
@@ -340,9 +344,7 @@ Either way there are a couple of '**gotchas**' to look out for.
 Download the Excel File `yield.xlsx` from Canvas - you can open it in Excel and look at it, but don't edit it or make any changes to it.
 The file contains crop growth in three different soil types.
 
-Now, in your Script window (top left) type the following text.
-Note the use of both comments, which are prefixed by `#`, and blank lines to make the text more readable.
-Just as you use headings and paragraphs to make an essay easier to read, use `#` and blank lines to make your R script easier to understand:
+Now, in your **Script window (top left)** which is probably headed **Untitled1** type the following text:
 
 ```{r, eval=FALSE}
 library(mosaic)
@@ -355,7 +357,10 @@ A few key points:
 
 - Line 1: Whenever you start RStudio you will need to activate the relevant packages, so `library(mosaic)` ensures we can use extra functions
 - Lines 2 to 4: Some R functions to read in your data file and save it in a temporary table within R called `pract0_dat`, produce a summary and display averages.
-- But **it is really hard to understand**! Imagine **iftextiswrittenlikethis** then it would be hard to understand. Whereas **if text is written like this** it now makes sense. So we will add spaces, blank lines and **Comments**. A comment is anything that follows the `#` symbol and is ignored by R, but helps you understand what you have done. So before going further, edit your script to make it more readable, with comment lines, blank lines, and a space around the `<-` symbol, and in the `mean` line:
+
+This is a very short piece of R commands but **it is really hard to understand**! Imagine **iftextiswrittenlikethis** then it would be hard to understand. Whereas **if text is written like this** it now makes sense. So we will add spaces, blank lines and comments. A comment is anything that follows the `#` symbol and is ignored by R, but helps you understand what you have done.
+
+So before going further, **edit your script as below** to make it more readable, with comment lines, blank lines, and a space around the `<-` symbol, and spaces in the `mean` line between `yield`, `~`, `soil` etc.:
 
 ```{r, eval=FALSE}
 # Practical 0: Revision and R basics
@@ -373,13 +378,9 @@ summary(pract0_dat)
 mean(yield ~ soil, data = pract0_dat)
 ```
 
-Now save your R script.
-Click on **File -\> Save** from the RStudio main menu, or if you prefer the save icon, and save the script as `practical0.R`.
-Next run each line of your script.
-Click on the `library(mosaic)` line and hit the **Ctl-Shift-Enter** keys simultaneously.
-This key combination sends a line from your script to the Console window where it is executed.
-The command should run without displaying anything as `mosaic` is probably already activated.
-Your cursor should jump to the `read.csv` line.
+Now save your R script. Click on **File -> Save** from the RStudio main menu, or if you prefer the save icon, and save the script as `practical0.R`.
+
+Next run each line of your script. Click on the `library(mosaic)` line and hit the **Ctl-Enter** keys simultaneously (on a MacBook it might be Ctl-Shift-Enter). This key combination sends a line from your script to the Console window where it is executed. The command should run without displaying anything as `mosaic` is probably already activated. Your cursor should jump to the `read.csv` line.
 
 However, when you hit Ctl-Shift-Enter on the `read.csv` line you should get the following error:
 
@@ -951,6 +952,15 @@ mean(weight_kg ~ animal_name, data = animals_df)
 # Save contents of animal weights data to csv file
 write.csv(animals_df, path = "Data/animals.csv")
 ```
+
+## Check your NES2504 folder contents
+Double-check the contents of your data analysis folder (which might be NES2303 or NES2504 depending on how you have labelled it). Open it in Windows File Manager:
+
+```{r, echo = FALSE}
+knitr::include_graphics("images/folder_contents.png")
+```
+
+You should see the name of your RStudio Project File (NES2504), the name of your R script (practical0) and your `Data` folder. This should contain your CSV data file from today, as well as its Excel equivalent.
 
 # Take home messages from today's practical
 
